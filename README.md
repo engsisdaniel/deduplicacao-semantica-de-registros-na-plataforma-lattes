@@ -16,7 +16,7 @@ reproduzidos e auditados de forma independente.
 | [`pares_referencia.json`](pares_referencia.json) | Os 1.000 pares de referência (gabarito), como listas `[a, b]` com `a < b` |
 | [`especificacao-geracao.md`](especificacao-geracao.md) | A especificação (*prompt*) que orientou a geração da base |
 | [`scripts/generate_test_batch.py`](scripts/generate_test_batch.py) | O gerador: os 100 projetos-base e as regras determinísticas de derivação |
-| [`scripts/ablacao_codigo.py`](scripts/ablacao_codigo.py) | O protocolo de medição no nível de pares e a ablação do código de cadastro |
+| [`pares_referencia.json`](pares_referencia.json) | O protocolo de medição, no nível de pares, confronta a saída do módulo com esse gabarito |
 
 ## Organização da base
 
@@ -84,6 +84,13 @@ bloco 301–400 com descrição vazia, bloco 401–500 com exatamente um autor p
 bloco 501–600 sem qualquer sobreposição de autores com 1–100, descrições distintas
 dentro de cada quíntupla e títulos-base distintos entre quíntuplas.
 
+Quanto à dificuldade da base, 145 dos 1.000 pares de referência têm título idêntico —
+o padrão mais comum de duplicação na plataforma, em que o cadastro é refeito com o
+mesmo título — enquanto os demais diferem por caixa, pontuação, sinônimos ou sufixos.
+Entre os não-duplicatas, 68 dos 100 têm título idêntico ao do projeto-base
+correspondente, de modo que a discriminação desses casos recai inteiramente sobre a
+lista de integrantes, na fase de validação.
+
 ## Sobre o risco de circularidade metodológica
 
 Uma objeção legítima a bases sintéticas geradas por modelos de linguagem é a
@@ -118,68 +125,6 @@ valores absolutos de precisão e *recall* relatados no artigo devem, por isso, s
 lidos como referência obtida em condições controladas, e não como previsão de
 desempenho sobre dados reais. Trata-se de uma limitação relativa ao **realismo
 distribucional** da base — e não de circularidade entre gerador e avaliado.
-
-## Nota: o código de cadastro removido dos títulos
-
-Os 100 projetos-base foram redigidos com um código de cadastro no início do título
-(`"12045.21.00001.03 - "`), cerca de 18% dos caracteres. Esse código **não tem
-contrapartida nos títulos de projeto da Plataforma Lattes** e, na base derivada, era
-constante dentro de cada quíntupla — e igual ao do registro não-duplicata (5xx)
-correspondente, de modo que os 600 registros se distribuíam por apenas 100 códigos.
-Ele é removido na mesclagem (`remove_codigo_cadastro`, em
-[`generate_test_batch.py`](scripts/generate_test_batch.py)), e a base publicada
-contém apenas o título do projeto.
-
-O efeito da remoção foi medido antes da decisão, reexecutando as oito configurações
-sobre três variantes que diferiam **apenas** no título — a base com o código como fora
-gerada, sem o código, e com um código distinto por registro. Os valores brutos estão em
-[`ablacao-codigo.json`](ablacao-codigo.json); a coluna do meio é a base atual.
-
-| # | τ_g | τ_v | com código | **sem código (atual)** | código único por registro |
-|---|---|---|---|---|---|
-| 1 | 0,8500 | 0,700 | 1,0000 / 0,4120 / 0,5836 | **1,0000 / 0,4220 / 0,5935** | 1,0000 / 0,4120 / 0,5836 |
-| 2 | 0,8500 | 0,700 | 1,0000 / 0,7480 / 0,8558 | **1,0000 / 0,7410 / 0,8512** | 1,0000 / 0,7230 / 0,8392 |
-| 3 | 0,8500 | 0,700 | 1,0000 / 0,7480 / 0,8558 | **1,0000 / 0,7410 / 0,8512** | 1,0000 / 0,7230 / 0,8392 |
-| 4 | 0,9350 | 0,700 | 1,0000 / 0,6670 / 0,8002 | **1,0000 / 0,6410 / 0,7812** | 1,0000 / 0,4910 / 0,6586 |
-| 5 | 0,7650 | 0,700 | 1,0000 / 0,7520 / 0,8584 | **1,0000 / 0,7520 / 0,8584** | 1,0000 / 0,7480 / 0,8558 |
-| 6 | 0,7650 | 0,770 | 1,0000 / 0,6440 / 0,7835 | **1,0000 / 0,6440 / 0,7835** | 1,0000 / 0,6410 / 0,7812 |
-| 7 | 0,7650 | 0,630 | 0,9849 / 0,9120 / 0,9470 | **0,9849 / 0,9120 / 0,9470** | 0,9848 / 0,9080 / 0,9448 |
-| 8 | 0,6885 | 0,567 | 0,8127 / 0,9760 / 0,8869 | **0,8668 / 0,9760 / 0,9182** | 0,8013 / 0,9760 / 0,8801 |
-
-Três leituras:
-
-**1. A configuração de melhor desempenho é insensível ao código.** No experimento 7 as
-três variantes coincidem até a quarta casa (F1 = 0,9470; 0,9448 com códigos únicos). Em
-τ_g = 0,765 o conteúdo do título já resolve o agrupamento, e o código não participa da
-decisão.
-
-**2. O código inflava o *recall* em τ_g alto.** No experimento 4 (τ_g = 0,935) o
-*recall* caía de 0,6670 para 0,4910 quando cada registro recebia um código próprio.
-Nesse regime o agrupamento é tão restritivo que eram os caracteres do código
-compartilhado que levavam muitos pares acima do limiar.
-
-**3. O código era ruído para o codificador, não sinal.** A lematização remove a
-pontuação, de modo que todo código vira uma sequência de dígitos; o codificador mapeia
-essas sequências para uma região estreita do espaço vetorial e aproxima títulos sem
-relação entre si. No experimento 8, os falsos positivos entre quíntuplas distintas caem
-de 90 para 25 com a remoção, elevando a precisão de 0,8127 para 0,8668.
-
-**Efeito colateral registrado.** Para 40% do bloco `v1` e parte do `v4`, a variação de
-título produzida pelo gerador incidia sobre o próprio código (troca de `" - "` por
-`": "`, pontos por vírgulas). Com o código removido, esses títulos passam a ser
-idênticos ao do projeto-base: dos 1.000 pares de referência, 145 têm título idêntico
-(eram 85), e 68 dos 100 registros não-duplicatas têm título idêntico ao seu base (eram
-48). O primeiro efeito facilita o *blocking* desses pares; o segundo torna os negativos
-mais difíceis, já que a discriminação recai inteiramente sobre os integrantes. Título
-idêntico entre dois cadastros do mesmo projeto é, de resto, o padrão de duplicação mais
-comum na plataforma.
-
-Reprodução da ablação:
-
-```bash
-python3 -m venv .venv && .venv/bin/pip install -e /caminho/para/deduply
-KMP_DUPLICATE_LIB_OK=TRUE OMP_NUM_THREADS=1 .venv/bin/python scripts/ablacao_codigo.py
-```
 
 ## Licença e uso
 

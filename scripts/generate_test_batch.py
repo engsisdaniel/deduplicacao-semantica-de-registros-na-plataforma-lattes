@@ -12,7 +12,6 @@ Ex: lote 1 → triplas 1-10 → ids 1-10, 101-110, 201-210
 
 import json
 import os
-import re
 import sys
 import argparse
 
@@ -29,7 +28,7 @@ OUTPUT_FILE = os.path.join(BASE_DIR, "base_sintetica.json")
 PROJECTS_DATA = {
     # ---- BLOCO 1: IDs 1-10 (Educação) ------------------------------------
     1: {
-        "titulo": "12045.21.00001.03 - PIBID: Formação Docente e Iniciação à Docência no Ensino Médio",
+        "titulo": "PIBID: Formação Docente e Iniciação à Docência no Ensino Médio",
         "descricao": (
             "O Programa Institucional de Bolsas de Iniciação à Docência (PIBID) da Universidade Federal do "
             "Paraná tem como objetivo principal promover a inserção dos estudantes de licenciatura no cotidiano "
@@ -49,7 +48,7 @@ PROJECTS_DATA = {
         "autores": "Ana Beatriz Lima, Carlos Eduardo Souza, FERNANDA OLIVEIRA ROCHA"
     },
     2: {
-        "titulo": "13027.20.00002.05 - Extensão Universitária e Letramento Digital em Escolas Públicas",
+        "titulo": "Extensão Universitária e Letramento Digital em Escolas Públicas",
         "descricao": (
             "Este projeto de extensão universitária tem como objetivo promover o letramento digital de "
             "professores e estudantes de escolas públicas municipais por meio de ações formativas e "
@@ -68,7 +67,7 @@ PROJECTS_DATA = {
         "autores": "Marcos Antônio Ferreira, Patrícia Nunes Alves, Renata Cristina Borges"
     },
     3: {
-        "titulo": "14089.22.00003.01 - Formação Continuada de Professores para a Educação Inclusiva",
+        "titulo": "Formação Continuada de Professores para a Educação Inclusiva",
         "descricao": (
             "A inclusão escolar de estudantes com deficiência, transtornos globais do desenvolvimento e "
             "altas habilidades/superdotação é um desafio constante para os sistemas educacionais brasileiros. "
@@ -87,7 +86,7 @@ PROJECTS_DATA = {
         "autores": "Juliana Costa Mendes, Roberto Henrique Prado, SILVIA APARECIDA MONTEIRO"
     },
     4: {
-        "titulo": "15301.21.00004.02 - Educação Ambiental Integrada ao Projeto Pedagógico do Ensino Fundamental",
+        "titulo": "Educação Ambiental Integrada ao Projeto Pedagógico do Ensino Fundamental",
         "descricao": (
             "O presente projeto tem como objetivo integrar a educação ambiental de forma transversal e "
             "interdisciplinar ao projeto pedagógico de escolas de ensino fundamental do município de "
@@ -106,7 +105,7 @@ PROJECTS_DATA = {
         "autores": "Diego Luiz Carvalho, Elaine Moreira Santos, Tânia Regina Vieira"
     },
     5: {
-        "titulo": "16543.22.00005.04 - Metodologias Ativas e Aprendizagem Cooperativa no Ensino Superior",
+        "titulo": "Metodologias Ativas e Aprendizagem Cooperativa no Ensino Superior",
         "descricao": (
             "O projeto investiga os impactos da adoção de metodologias ativas de aprendizagem, com ênfase "
             "na aprendizagem cooperativa e na aprendizagem baseada em problemas, no desempenho e na "
@@ -125,7 +124,7 @@ PROJECTS_DATA = {
         "autores": "Fábio Augusto Martins, Lúcia Helena Rodrigues, Wagner Correia Neto"
     },
     6: {
-        "titulo": "17612.23.00006.01 - Gamificação no Ensino de Ciências: Avaliação de Aprendizagem e Engajamento",
+        "titulo": "Gamificação no Ensino de Ciências: Avaliação de Aprendizagem e Engajamento",
         "descricao": (
             "A gamificação tem sido apontada como uma estratégia promissora para aumentar o engajamento "
             "e a motivação dos estudantes no processo de ensino-aprendizagem. O presente projeto tem como "
@@ -144,7 +143,7 @@ PROJECTS_DATA = {
         "autores": "Adriana Gonçalves Leal, Bruno Cesar Teixeira, Mônica Aparecida Figueiredo"
     },
     7: {
-        "titulo": "18754.20.00007.03 - Pedagogia Popular Freiriana em Espaços Educativos Comunitários",
+        "titulo": "Pedagogia Popular Freiriana em Espaços Educativos Comunitários",
         "descricao": (
             "Fundamentado nos princípios da educação popular desenvolvidos por Paulo Freire, este projeto "
             "propõe ações educativas emancipadoras em comunidades periféricas de Campinas, buscando "
@@ -163,7 +162,7 @@ PROJECTS_DATA = {
         "autores": "Cláudia Regina Pinheiro, EDSON MARCOS ALBUQUERQUE, Vera Lúcia Nascimento"
     },
     8: {
-        "titulo": "19823.21.00008.02 - Avaliação Institucional e Qualidade no Ensino Superior: Uma Análise do SINAES",
+        "titulo": "Avaliação Institucional e Qualidade no Ensino Superior: Uma Análise do SINAES",
         "descricao": (
             "O Sistema Nacional de Avaliação da Educação Superior (SINAES) constitui o principal "
             "mecanismo de avaliação das instituições de ensino superior no Brasil. Este projeto analisa "
@@ -183,7 +182,7 @@ PROJECTS_DATA = {
         "autores": "Alexandre Moura Ramos, Cristiane Batista Lima, Henrique Souza Medeiros"
     },
     9: {
-        "titulo": "20937.22.00009.01 - Ensino Bilíngue Português-Inglês na Educação Básica: Desafios e Perspectivas",
+        "titulo": "Ensino Bilíngue Português-Inglês na Educação Básica: Desafios e Perspectivas",
         "descricao": (
             "A crescente expansão do ensino bilíngue em instituições de educação básica no Brasil "
             "suscita questionamentos sobre a qualidade das propostas implementadas e seus impactos "
@@ -203,7 +202,7 @@ PROJECTS_DATA = {
         "autores": "Beatriz Falcão Cunha, José Carlos Wanderley, Natália Perini Zanatta"
     },
     10: {
-        "titulo": "21048.23.00010.04 - Evasão Escolar no Ensino Médio: Fatores Socioeconômicos e Estratégias de Intervenção",
+        "titulo": "Evasão Escolar no Ensino Médio: Fatores Socioeconômicos e Estratégias de Intervenção",
         "descricao": (
             "A evasão escolar no ensino médio representa um dos maiores desafios da educação brasileira, "
             "com impactos diretos sobre as perspectivas de desenvolvimento social e econômico do país. "
@@ -225,7 +224,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 2: IDs 11-20 (Biologia) ------------------------------------
     11: {
-        "titulo": "22103.20.00011.01 - Levantamento Florístico da Mata Atlântica em Fragmentos do Litoral Norte do ES",
+        "titulo": "Levantamento Florístico da Mata Atlântica em Fragmentos do Litoral Norte do ES",
         "descricao": (
             "A Mata Atlântica é considerada um dos biomas mais ameaçados do planeta, com menos de 12% "
             "de sua cobertura original preservada. Este projeto tem como objetivo realizar o levantamento "
@@ -244,7 +243,7 @@ PROJECTS_DATA = {
         "autores": "André Luis Pereira, Camila Faria Gomes, Rodrigo Matos Cavalcanti"
     },
     12: {
-        "titulo": "23214.21.00012.03 - Macroinvertebrados Bentônicos como Bioindicadores de Qualidade em Rios do Paraná",
+        "titulo": "Macroinvertebrados Bentônicos como Bioindicadores de Qualidade em Rios do Paraná",
         "descricao": (
             "A comunidade de macroinvertebrados bentônicos tem sido amplamente utilizada como ferramenta "
             "de biomonitoramento da qualidade de ecossistemas aquáticos, dada sua sensibilidade a "
@@ -263,7 +262,7 @@ PROJECTS_DATA = {
         "autores": "Daniela Couto Rezende, Felipe Augusto Dias, Mariana Lopes Vasconcelos"
     },
     13: {
-        "titulo": "24325.22.00013.02 - Filogenia Molecular e Biogeografia de Aves Neotropicais do Gênero Thraupidae",
+        "titulo": "Filogenia Molecular e Biogeografia de Aves Neotropicais do Gênero Thraupidae",
         "descricao": (
             "A família Thraupidae representa um dos grupos mais diversos de aves Neotropicais, com "
             "mais de 370 espécies distribuídas por toda a América do Sul e Central. Este projeto "
@@ -281,7 +280,7 @@ PROJECTS_DATA = {
         "autores": "Eduardo Siqueira Brandão, Luciana Moraes Abreu, Paulo Roberto Esteves"
     },
     14: {
-        "titulo": "25436.20.00014.04 - Fungos Rizosféricos e Biofertilizantes na Agricultura Orgânica Sustentável",
+        "titulo": "Fungos Rizosféricos e Biofertilizantes na Agricultura Orgânica Sustentável",
         "descricao": (
             "O aproveitamento da biodiversidade microbiana do solo como bioinsumos agrícolas representa "
             "uma alternativa promissora para a redução da dependência de fertilizantes químicos sintéticos "
@@ -300,7 +299,7 @@ PROJECTS_DATA = {
         "autores": "Aline Cristina Barbosa, Marcelo Tadeu Freitas, Sandra Mara Costa"
     },
     15: {
-        "titulo": "26547.23.00015.01 - Briófitas do Cerrado: Taxonomia, Distribuição e Conservação",
+        "titulo": "Briófitas do Cerrado: Taxonomia, Distribuição e Conservação",
         "descricao": (
             "As briófitas (musgos, hepáticas e antóceros) compõem um grupo vegetal de grande importância "
             "ecológica, atuando como bioindicadores ambientais, retentores de umidade e berçários para "
@@ -318,7 +317,7 @@ PROJECTS_DATA = {
         "autores": "Cintia Oliveira Machado, Jorge Henrique Barros, Regina Célia Matos"
     },
     16: {
-        "titulo": "27658.21.00016.03 - Comportamento Social e Ecologia de Primatas em Fragmento Amazônico",
+        "titulo": "Comportamento Social e Ecologia de Primatas em Fragmento Amazônico",
         "descricao": (
             "Os primatas neotropicais estão entre os grupos mais ameaçados pela fragmentação florestal "
             "na Amazônia brasileira. Este projeto investiga o comportamento social, o uso do habitat "
@@ -336,7 +335,7 @@ PROJECTS_DATA = {
         "autores": "Fernando Luiz Assis, Kátia Regina Cunha, Thiago Augusto Moreira"
     },
     17: {
-        "titulo": "28769.22.00017.02 - Estrutura e Função de Enzimas Celulolíticas de Fungos Termofílicos",
+        "titulo": "Estrutura e Função de Enzimas Celulolíticas de Fungos Termofílicos",
         "descricao": (
             "A produção de biocombustíveis de segunda geração a partir de biomassa lignocelulósica "
             "requer a atuação de enzimas eficientes na degradação da celulose em condições de "
@@ -355,7 +354,7 @@ PROJECTS_DATA = {
         "autores": "Giovanna Pereira Ribeiro, Humberto Carlos Neves, Lívia Fernanda Campos"
     },
     18: {
-        "titulo": "29870.20.00018.04 - Respostas Fisiológicas de Plantas do Semiárido ao Estresse Hídrico",
+        "titulo": "Respostas Fisiológicas de Plantas do Semiárido ao Estresse Hídrico",
         "descricao": (
             "A vegetação da Caatinga desenvolveu mecanismos fisiológicos sofisticados para sobreviver "
             "às condições extremas de deficiência hídrica características do semiárido nordestino. "
@@ -373,7 +372,7 @@ PROJECTS_DATA = {
         "autores": "Janaína Sousa Carvalho, Márcio Araújo Lima, Viviane Torres Brito"
     },
     19: {
-        "titulo": "30981.23.00019.01 - Branqueamento de Corais no Recife de Abrolhos: Monitoramento e Conservação",
+        "titulo": "Branqueamento de Corais no Recife de Abrolhos: Monitoramento e Conservação",
         "descricao": (
             "Os recifes de coral do Banco dos Abrolhos, no sul da Bahia, abrigam a maior biodiversidade "
             "marinha do Atlântico Sul. O fenômeno de branqueamento, desencadeado pelo aumento da "
@@ -391,7 +390,7 @@ PROJECTS_DATA = {
         "autores": "Kátia Melo Guimarães, Newton Rodrigues Barros, Priscila Sampaio Castro"
     },
     20: {
-        "titulo": "31092.21.00020.03 - Epidemiologia e Controle da Leishmaniose Tegumentar na Região Norte do Brasil",
+        "titulo": "Epidemiologia e Controle da Leishmaniose Tegumentar na Região Norte do Brasil",
         "descricao": (
             "A leishmaniose tegumentar americana (LTA) é uma doença negligenciada que afeta populações "
             "rurais e de fronteira agrícola na região Norte do Brasil. Este projeto investiga a "
@@ -411,7 +410,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 3: IDs 21-30 (Computação) ----------------------------------
     21: {
-        "titulo": "32103.22.00021.02 - Aprendizado de Máquina para Classificação de Dados em Saúde Digital",
+        "titulo": "Aprendizado de Máquina para Classificação de Dados em Saúde Digital",
         "descricao": (
             "A aplicação de técnicas de aprendizado de máquina em dados clínicos tem demonstrado "
             "grande potencial para apoiar o diagnóstico e o prognóstico de doenças. Este projeto "
@@ -430,7 +429,7 @@ PROJECTS_DATA = {
         "autores": "Arthur Rocha Mendonça, Débora Lima Furtado, Igor Vasconcelos Braga"
     },
     22: {
-        "titulo": "33214.21.00022.04 - Computação em Nuvem: Latência e Desempenho em Sistemas Distribuídos",
+        "titulo": "Computação em Nuvem: Latência e Desempenho em Sistemas Distribuídos",
         "descricao": (
             "A migração de aplicações críticas para ambientes de computação em nuvem apresenta "
             "desafios relacionados à latência, disponibilidade e consistência dos dados. "
@@ -450,7 +449,7 @@ PROJECTS_DATA = {
         "autores": "Bianca Siqueira Pacheco, Emanuel Costa Freitas, Renato Alves Gonçalves"
     },
     23: {
-        "titulo": "34325.23.00023.01 - Segurança em Redes IoT: Criptografia e Mitigação de Vulnerabilidades",
+        "titulo": "Segurança em Redes IoT: Criptografia e Mitigação de Vulnerabilidades",
         "descricao": (
             "A proliferação de dispositivos conectados à Internet das Coisas (IoT) em ambientes "
             "industriais e domésticos amplia significativamente a superfície de ataque a "
@@ -469,7 +468,7 @@ PROJECTS_DATA = {
         "autores": "Carolina Andrade Melo, Fábio Luiz Correia, Tatiana Borges Rezende"
     },
     24: {
-        "titulo": "35436.22.00024.03 - Redes Neurais Convolucionais para Reconhecimento de Imagens Médicas",
+        "titulo": "Redes Neurais Convolucionais para Reconhecimento de Imagens Médicas",
         "descricao": (
             "O diagnóstico por imagem representa uma das áreas mais promissoras para a aplicação "
             "de deep learning na medicina. Este projeto desenvolve e avalia arquiteturas de redes "
@@ -487,7 +486,7 @@ PROJECTS_DATA = {
         "autores": "Daniel Ferreira Campos, Giovana Martins Pereira, Sérgio Luiz Ramos"
     },
     25: {
-        "titulo": "36547.20.00025.02 - Bancos de Dados em Grafos: Otimização de Consultas e Inferência Semântica",
+        "titulo": "Bancos de Dados em Grafos: Otimização de Consultas e Inferência Semântica",
         "descricao": (
             "Os bancos de dados em grafos têm emergido como solução eficaz para modelar e consultar "
             "dados altamente conectados em domínios como redes sociais, bioinformática e sistemas "
@@ -505,7 +504,7 @@ PROJECTS_DATA = {
         "autores": "Eliane Cristina Souza, Hugo Menezes Carvalho, Verônica Abreu Dias"
     },
     26: {
-        "titulo": "37658.23.00026.04 - Análise de Sentimentos em Redes Sociais com Processamento de Linguagem Natural",
+        "titulo": "Análise de Sentimentos em Redes Sociais com Processamento de Linguagem Natural",
         "descricao": (
             "O monitoramento de opiniões e sentimentos expressos em redes sociais possui aplicações "
             "em diversas áreas, desde marketing e comunicação política até vigilância em saúde pública. "
@@ -523,7 +522,7 @@ PROJECTS_DATA = {
         "autores": "Flávia Rocha Nunes, Ivã Luís Torres, Wendell Augusto Barros"
     },
     27: {
-        "titulo": "38769.21.00027.01 - Planejamento de Trajetórias para Robótica Autônoma em Ambientes Dinâmicos",
+        "titulo": "Planejamento de Trajetórias para Robótica Autônoma em Ambientes Dinâmicos",
         "descricao": (
             "O planejamento de trajetórias em tempo real é um desafio fundamental para robôs autônomos "
             "que operam em ambientes compartilhados com humanos e outros agentes dinâmicos. "
@@ -541,7 +540,7 @@ PROJECTS_DATA = {
         "autores": "Guilherme Pedroso Lima, Nathalia Cristina Fonseca, Yuri Barbosa Almeida"
     },
     28: {
-        "titulo": "39870.22.00028.03 - Acessibilidade em Aplicativos Mobile para Deficientes Visuais",
+        "titulo": "Acessibilidade em Aplicativos Mobile para Deficientes Visuais",
         "descricao": (
             "A acessibilidade digital é um direito fundamental que possibilita a participação plena "
             "de pessoas com deficiência na sociedade digital. Este projeto avalia as barreiras de "
@@ -560,7 +559,7 @@ PROJECTS_DATA = {
         "autores": "Helena Vieira Cardoso, Leandro Pinto Mendes, Zélia Aparecida Monteiro"
     },
     29: {
-        "titulo": "40981.23.00029.02 - Blockchain e Contratos Inteligentes para Rastreabilidade na Cadeia do Agronegócio",
+        "titulo": "Blockchain e Contratos Inteligentes para Rastreabilidade na Cadeia do Agronegócio",
         "descricao": (
             "A rastreabilidade de produtos agroalimentares é essencial para garantir a segurança "
             "do consumidor e a conformidade com regulamentações sanitárias e ambientais. "
@@ -578,7 +577,7 @@ PROJECTS_DATA = {
         "autores": "Ian Marcelo Freitas, Melissa Duarte Costa, Otávio Luiz Alencar"
     },
     30: {
-        "titulo": "41092.20.00030.04 - Internet das Coisas para Monitoramento Ambiental em Zonas Urbanas",
+        "titulo": "Internet das Coisas para Monitoramento Ambiental em Zonas Urbanas",
         "descricao": (
             "O monitoramento contínuo de variáveis ambientais em zonas urbanas é fundamental para "
             "subsidiar políticas de gestão ambiental e saúde pública. Este projeto desenvolve "
@@ -598,7 +597,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 4: IDs 31-40 (Agronomia) -----------------------------------
     31: {
-        "titulo": "42103.21.00031.02 - Melhoramento Genético da Soja para Tolerância à Seca em Regiões Tropicais",
+        "titulo": "Melhoramento Genético da Soja para Tolerância à Seca em Regiões Tropicais",
         "descricao": (
             "A soja é a principal oleaginosa cultivada no Brasil, ocupando mais de 40 milhões de "
             "hectares e respondendo por parcela significativa das exportações agropecuárias. "
@@ -617,7 +616,7 @@ PROJECTS_DATA = {
         "autores": "Adriano Costa Vilela, Beatriz Ferreira Moura, Reinaldo Gomes Viana"
     },
     32: {
-        "titulo": "43214.22.00032.04 - Controle Biológico da Broca-do-Café com Nematoides Entomopatogênicos",
+        "titulo": "Controle Biológico da Broca-do-Café com Nematoides Entomopatogênicos",
         "descricao": (
             "A broca-do-café (Hypothenemus hampei) é a principal praga da cafeicultura mundial, "
             "causando perdas que podem superar 30% da produção em anos de alta infestação. "
@@ -636,7 +635,7 @@ PROJECTS_DATA = {
         "autores": "Carla Meireles Pinheiro, Eduardo Tadeu Borges, Solange Cristina Ramos"
     },
     33: {
-        "titulo": "44325.23.00033.01 - Transição Agroecológica em Sistemas Familiares do Sul do Brasil",
+        "titulo": "Transição Agroecológica em Sistemas Familiares do Sul do Brasil",
         "descricao": (
             "A agricultura familiar tem papel central na produção de alimentos para o mercado interno "
             "brasileiro, mas enfrenta desafios relacionados à sustentabilidade ambiental e econômica "
@@ -655,7 +654,7 @@ PROJECTS_DATA = {
         "autores": "David Soares Magalhães, Fernanda Cristina Lago, Valdirene Aparecida Sousa"
     },
     34: {
-        "titulo": "45436.20.00034.03 - Manejo Eficiente da Água em Solos Arenosos do Semiárido do Nordeste",
+        "titulo": "Manejo Eficiente da Água em Solos Arenosos do Semiárido do Nordeste",
         "descricao": (
             "A escassez hídrica no semiárido nordestino exige o desenvolvimento de estratégias "
             "eficientes de uso da água para a viabilização da produção agrícola sustentável. "
@@ -674,7 +673,7 @@ PROJECTS_DATA = {
         "autores": "Elisa Moreno Cavalcanti, Guilherme Prado Siqueira, Wania Fátima Melo"
     },
     35: {
-        "titulo": "46547.21.00035.02 - Qualidade Pós-Colheita e Armazenamento Refrigerado de Manga Tommy Atkins",
+        "titulo": "Qualidade Pós-Colheita e Armazenamento Refrigerado de Manga Tommy Atkins",
         "descricao": (
             "A manga (Mangifera indica) é uma das principais frutas tropicais exportadas pelo Brasil, "
             "com o Vale do São Francisco respondendo por mais de 90% das exportações nacionais. "
@@ -692,7 +691,7 @@ PROJECTS_DATA = {
         "autores": "Fábio Ramos Azevedo, Letícia Borges Henrique, Ubiraci Alves Neto"
     },
     36: {
-        "titulo": "47658.22.00036.04 - Manejo Integrado de Doenças Fúngicas do Trigo no Sul do Brasil",
+        "titulo": "Manejo Integrado de Doenças Fúngicas do Trigo no Sul do Brasil",
         "descricao": (
             "A ferrugem da folha (Puccinia triticina), a giberela (Fusarium graminearum) e a mancha "
             "amarela (Drechslera tritici-repentis) são as principais doenças fúngicas do trigo "
@@ -711,7 +710,7 @@ PROJECTS_DATA = {
         "autores": "Gisele Aparecida Farias, Marco Aurélio Rezende, Teresinha Gomes Duarte"
     },
     37: {
-        "titulo": "48769.23.00037.01 - Sequestro de Carbono no Solo em Sistemas de Plantio Direto Consolidado",
+        "titulo": "Sequestro de Carbono no Solo em Sistemas de Plantio Direto Consolidado",
         "descricao": (
             "O plantio direto é o sistema de manejo do solo dominante na agricultura brasileira, "
             "cobrindo mais de 35 milhões de hectares. Uma das principais vantagens apregoadas "
@@ -729,7 +728,7 @@ PROJECTS_DATA = {
         "autores": "Hugo Ferreira Campos, Nara Cristina Andrade, Patrícia Souza Lima"
     },
     38: {
-        "titulo": "49870.20.00038.03 - Qualidade Enológica de Vinhos Finos das Regiões de Altitude de SC",
+        "titulo": "Qualidade Enológica de Vinhos Finos das Regiões de Altitude de SC",
         "descricao": (
             "O estado de Santa Catarina possui uma viticultura emergente nas regiões de altitude "
             "da Serra Gaúcha e do Planalto Catarinense, com potencial reconhecido para a "
@@ -747,7 +746,7 @@ PROJECTS_DATA = {
         "autores": "Igor Machado Ribeiro, Olga Regina Santos, Sabrina Melo Torres"
     },
     39: {
-        "titulo": "50981.21.00039.02 - Nutrição e Suplementação Proteica em Bovinos de Corte em Pastagem",
+        "titulo": "Nutrição e Suplementação Proteica em Bovinos de Corte em Pastagem",
         "descricao": (
             "O Brasil possui o maior rebanho comercial bovino do mundo, com a pecuária de corte "
             "baseada predominantemente em sistemas extensivos de pastagem. A suplementação "
@@ -765,7 +764,7 @@ PROJECTS_DATA = {
         "autores": "Jonas Pereira Coelho, Miriam Aparecida Cruz, Wilton Rodrigues Barros"
     },
     40: {
-        "titulo": "51092.22.00040.04 - Qualidade Fisiológica de Sementes de Soja em Diferentes Condições de Armazenamento",
+        "titulo": "Qualidade Fisiológica de Sementes de Soja em Diferentes Condições de Armazenamento",
         "descricao": (
             "A manutenção da qualidade fisiológica das sementes durante o armazenamento é fundamental "
             "para garantir o estabelecimento adequado das lavouras e a produtividade das culturas. "
@@ -786,7 +785,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 5: IDs 41-50 (Saúde) --------------------------------------
     41: {
-        "titulo": "52103.21.00041.01 - Prevalência e Fatores de Risco do Diabetes Tipo 2 em Adultos Urbanos",
+        "titulo": "Prevalência e Fatores de Risco do Diabetes Tipo 2 em Adultos Urbanos",
         "descricao": (
             "O diabetes mellitus tipo 2 é uma das doenças crônicas de maior impacto em saúde pública "
             "no Brasil, com estimativa de 16 milhões de adultos afetados e tendência crescente. "
@@ -805,7 +804,7 @@ PROJECTS_DATA = {
         "autores": "Larissa Moraes Cunha, Paulo Sérgio Vasconcelos, Silvana Batista Rocha"
     },
     42: {
-        "titulo": "53214.22.00042.03 - Intervenção Psicossocial para Depressão em Adolescentes Escolares",
+        "titulo": "Intervenção Psicossocial para Depressão em Adolescentes Escolares",
         "descricao": (
             "A depressão na adolescência é um problema de saúde mental subestimado e subtratado, "
             "com consequências negativas sobre o desenvolvimento, o desempenho escolar e a "
@@ -824,7 +823,7 @@ PROJECTS_DATA = {
         "autores": "Márcio Luiz Teixeira, Raíssa Andrade Nunes, Túlio Henrique Correia"
     },
     43: {
-        "titulo": "54325.23.00043.02 - Resistência Bacteriana a Antibióticos em Infecções Hospitalares do Nordeste",
+        "titulo": "Resistência Bacteriana a Antibióticos em Infecções Hospitalares do Nordeste",
         "descricao": (
             "A resistência antimicrobiana representa uma das maiores ameaças à saúde pública global, "
             "com crescente prevalência de bactérias multirresistentes em ambientes hospitalares "
@@ -843,7 +842,7 @@ PROJECTS_DATA = {
         "autores": "Natália Bentes Araújo, Osvaldo Luiz Prado, Yolanda Cristina Freitas"
     },
     44: {
-        "titulo": "55436.20.00044.04 - Cuidados Paliativos e Manejo da Dor em Pacientes Oncológicos Hospitalizados",
+        "titulo": "Cuidados Paliativos e Manejo da Dor em Pacientes Oncológicos Hospitalizados",
         "descricao": (
             "Os cuidados paliativos visam melhorar a qualidade de vida de pacientes com doenças "
             "ameaçadoras da vida por meio da prevenção e alívio do sofrimento. O manejo adequado "
@@ -862,7 +861,7 @@ PROJECTS_DATA = {
         "autores": "Otília Fernandes Guimarães, Pedro Augusto Braga, Regina Maria Andrade"
     },
     45: {
-        "titulo": "56547.21.00045.01 - Vigilância Entomológica e Controle Vetorial da Dengue em Municípios do Interior do CE",
+        "titulo": "Vigilância Entomológica e Controle Vetorial da Dengue em Municípios do Interior do CE",
         "descricao": (
             "A dengue, a zika e a chikungunya são arboviroses transmitidas pelo Aedes aegypti "
             "que representam grave problema de saúde pública no Brasil, especialmente no Nordeste. "
@@ -880,7 +879,7 @@ PROJECTS_DATA = {
         "autores": "Patrícia Neves Rocha, Sandro Luiz Gonçalves, Wilma Cristina Lemos"
     },
     46: {
-        "titulo": "57658.22.00046.03 - Suporte Nutricional e Desnutrição em Pacientes Clínicos Hospitalizados",
+        "titulo": "Suporte Nutricional e Desnutrição em Pacientes Clínicos Hospitalizados",
         "descricao": (
             "A desnutrição hospitalar é uma condição prevalente e frequentemente subdiagnosticada, "
             "associada a piores desfechos clínicos, maior tempo de internação e elevação dos "
@@ -898,7 +897,7 @@ PROJECTS_DATA = {
         "autores": "Quitéria Aparecida Mota, Rodrigo Siqueira Campos, Tereza Cristina Braga"
     },
     47: {
-        "titulo": "58769.23.00047.02 - Reabilitação Neuromotora Pós-AVC por Estimulação e Fisioterapia Intensiva",
+        "titulo": "Reabilitação Neuromotora Pós-AVC por Estimulação e Fisioterapia Intensiva",
         "descricao": (
             "O acidente vascular cerebral (AVC) é a principal causa de incapacidade adquirida "
             "em adultos no Brasil. A neuroplasticidade cerebral permite recuperação funcional "
@@ -917,7 +916,7 @@ PROJECTS_DATA = {
         "autores": "Roberto Carlos Assis, Sandra Patrícia Mendes, Ulisses Faria Moreira"
     },
     48: {
-        "titulo": "59870.20.00048.04 - Fluoretação da Água e Prevalência de Cárie e Fluorose em Crianças",
+        "titulo": "Fluoretação da Água e Prevalência de Cárie e Fluorose em Crianças",
         "descricao": (
             "A fluoretação das águas de abastecimento público é considerada uma das medidas de "
             "saúde pública de maior custo-efetividade para a prevenção da cárie dentária. "
@@ -935,7 +934,7 @@ PROJECTS_DATA = {
         "autores": "Samara Luiza Borges, Valentim Costa Neves, Yara Beatriz Machado"
     },
     49: {
-        "titulo": "60981.21.00049.01 - Rastreamento e Controle da Hipertensão Arterial na Atenção Primária",
+        "titulo": "Rastreamento e Controle da Hipertensão Arterial na Atenção Primária",
         "descricao": (
             "A hipertensão arterial sistêmica é o principal fator de risco cardiovascular no Brasil, "
             "afetando aproximadamente 36% da população adulta. O controle inadequado da pressão "
@@ -954,7 +953,7 @@ PROJECTS_DATA = {
         "autores": "Tássia Rodrigues Feitosa, Vinícius Almeida Pinheiro, Zuleide Aparecida Costa"
     },
     50: {
-        "titulo": "61092.22.00050.03 - Diagnóstico Molecular por PCR em Tempo Real de Arboviroses Tropicais",
+        "titulo": "Diagnóstico Molecular por PCR em Tempo Real de Arboviroses Tropicais",
         "descricao": (
             "O diagnóstico laboratorial precoce e preciso das arboviroses (dengue, zika, chikungunya, "
             "febre amarela) é essencial para o manejo clínico adequado e para a resposta oportuna "
@@ -975,7 +974,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 6: IDs 51-60 (Ciências Sociais) ----------------------------
     51: {
-        "titulo": "62103.21.00051.02 - Segregação Habitacional e Desigualdade Social em Metrópoles Brasileiras",
+        "titulo": "Segregação Habitacional e Desigualdade Social em Metrópoles Brasileiras",
         "descricao": (
             "A segregação residencial é um fenômeno estruturante das desigualdades urbanas no Brasil, "
             "reproduzindo condições diferenciadas de acesso a serviços, equipamentos públicos e "
@@ -993,7 +992,7 @@ PROJECTS_DATA = {
         "autores": "Álvaro Mendes Fonseca, Bruna Lopes Cavalcanti, Caio Rodrigues Vieira"
     },
     52: {
-        "titulo": "63214.22.00052.04 - Identidade, Território e Direitos dos Povos Indígenas no Brasil Central",
+        "titulo": "Identidade, Território e Direitos dos Povos Indígenas no Brasil Central",
         "descricao": (
             "Os povos indígenas do Brasil Central enfrentam crescentes ameaças à integridade de "
             "seus territórios e ao exercício de seus direitos constitucionalmente garantidos, "
@@ -1011,7 +1010,7 @@ PROJECTS_DATA = {
         "autores": "Denise Cristina Pinto, Everton Luís Gomes, Fátima Borges Souza"
     },
     53: {
-        "titulo": "64325.23.00053.01 - Direitos Fundamentais e Controle de Constitucionalidade no STF",
+        "titulo": "Direitos Fundamentais e Controle de Constitucionalidade no STF",
         "descricao": (
             "O Supremo Tribunal Federal (STF) tem exercido papel crescente na conformação das "
             "políticas públicas brasileiras por meio do controle de constitucionalidade. "
@@ -1030,7 +1029,7 @@ PROJECTS_DATA = {
         "autores": "Gabriel Henrique Neto, Helena Moraes Campos, Ivan Rodrigues Lima"
     },
     54: {
-        "titulo": "65436.20.00054.03 - Participação Política Juvenil e Democracia Digital no Brasil",
+        "titulo": "Participação Política Juvenil e Democracia Digital no Brasil",
         "descricao": (
             "A relação entre juventude, participação política e democracia tem sido reconfigurada "
             "pelas possibilidades abertas pelas tecnologias digitais de comunicação e mobilização. "
@@ -1048,7 +1047,7 @@ PROJECTS_DATA = {
         "autores": "Joana Cristina Abreu, Kelvin Augusto Rocha, Lídia Fernandes Prado"
     },
     55: {
-        "titulo": "66547.21.00055.02 - Precarização do Trabalho e Desemprego Estrutural na Era da Plataformização",
+        "titulo": "Precarização do Trabalho e Desemprego Estrutural na Era da Plataformização",
         "descricao": (
             "A expansão das plataformas digitais de trabalho — como aplicativos de transporte, "
             "entrega e serviços domésticos — tem promovido novas formas de precarização laboral "
@@ -1066,7 +1065,7 @@ PROJECTS_DATA = {
         "autores": "Marcos Vinícius Leal, Nadine Cristina Rezende, Osmar Luiz Barros"
     },
     56: {
-        "titulo": "67658.22.00056.04 - Neopentecostalismo, Política e Esfera Pública no Brasil Contemporâneo",
+        "titulo": "Neopentecostalismo, Política e Esfera Pública no Brasil Contemporâneo",
         "descricao": (
             "O crescimento do neopentecostalismo nas últimas décadas transformou profundamente "
             "o campo religioso brasileiro e suas interfaces com a política. Este projeto investiga "
@@ -1083,7 +1082,7 @@ PROJECTS_DATA = {
         "autores": "Patrícia Gomes Alves, Quirino Batista Farias, Rebeca Andrade Melo"
     },
     57: {
-        "titulo": "68769.23.00057.01 - Encarceramento em Massa e Política Penal no Brasil Pós-1988",
+        "titulo": "Encarceramento em Massa e Política Penal no Brasil Pós-1988",
         "descricao": (
             "O Brasil possui a terceira maior população carcerária do mundo, com mais de 830 mil "
             "pessoas privadas de liberdade em um sistema com capacidade para menos de 500 mil. "
@@ -1101,7 +1100,7 @@ PROJECTS_DATA = {
         "autores": "Samuel Ferreira Coelho, Taísa Melo Gonçalves, Ulrico Pinheiro Ramos"
     },
     58: {
-        "titulo": "69870.20.00058.03 - Políticas de Ações Afirmativas para Mulheres no Mercado de Trabalho",
+        "titulo": "Políticas de Ações Afirmativas para Mulheres no Mercado de Trabalho",
         "descricao": (
             "As desigualdades de gênero no mercado de trabalho brasileiro persistem apesar dos "
             "avanços legislativos e das políticas de igualdade das últimas décadas. Este projeto "
@@ -1119,7 +1118,7 @@ PROJECTS_DATA = {
         "autores": "Vera Lúcia Torres, Wilson Siqueira Nunes, Xênia Rocha Ferreira"
     },
     59: {
-        "titulo": "70981.21.00059.02 - Integração Regional e Diplomacia no Mercosul: Desafios Contemporâneos",
+        "titulo": "Integração Regional e Diplomacia no Mercosul: Desafios Contemporâneos",
         "descricao": (
             "O Mercosul atravessa um período de tensões e redefinições no contexto das transformações "
             "da ordem internacional e das mudanças políticas internas nos países membros. "
@@ -1136,7 +1135,7 @@ PROJECTS_DATA = {
         "autores": "Yolanda Batista Cruz, Zeno Marcos Prado, Aída Fernandes Borges"
     },
     60: {
-        "titulo": "71092.22.00060.04 - Movimentos Sociais Rurais e Reforma Agrária no Brasil: MST e Territórios",
+        "titulo": "Movimentos Sociais Rurais e Reforma Agrária no Brasil: MST e Territórios",
         "descricao": (
             "O Movimento dos Trabalhadores Rurais Sem Terra (MST) constitui um dos movimentos "
             "sociais mais significativos da história recente do Brasil, com atuação em 24 estados "
@@ -1157,7 +1156,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 7: IDs 61-70 (Engenharia) ----------------------------------
     61: {
-        "titulo": "72103.23.00061.01 - Durabilidade do Concreto em Estruturas de Pontes Submetidas a Cloretos",
+        "titulo": "Durabilidade do Concreto em Estruturas de Pontes Submetidas a Cloretos",
         "descricao": (
             "A deterioração prematura de estruturas de concreto armado em pontes e viadutos "
             "representa um grave problema de engenharia e segurança pública no Brasil. "
@@ -1177,7 +1176,7 @@ PROJECTS_DATA = {
         "autores": "Estevão Menezes Santos, Flávia Cristina Borges, Gilberto Luiz Ramos"
     },
     62: {
-        "titulo": "73214.21.00062.03 - Sistemas Fotovoltaicos Integrados à Edificação: Eficiência e Geração Distribuída",
+        "titulo": "Sistemas Fotovoltaicos Integrados à Edificação: Eficiência e Geração Distribuída",
         "descricao": (
             "A geração distribuída de energia solar fotovoltaica tem crescido exponencialmente "
             "no Brasil, impulsionada pela queda de custos dos painéis e pela regulamentação "
@@ -1196,7 +1195,7 @@ PROJECTS_DATA = {
         "autores": "Helena Aparecida Moura, Ilson Augusto Lima, Joelma Cristina Fonseca"
     },
     63: {
-        "titulo": "74325.22.00063.02 - Compósitos de Fibra de Carbono para Componentes Aeroespaciais Leves",
+        "titulo": "Compósitos de Fibra de Carbono para Componentes Aeroespaciais Leves",
         "descricao": (
             "Os materiais compósitos de fibra de carbono com matriz polimérica (CFRP) são "
             "amplamente utilizados na indústria aeroespacial por sua elevada relação "
@@ -1215,7 +1214,7 @@ PROJECTS_DATA = {
         "autores": "Kelton Rodrigues Melo, Lorena Batista Pinheiro, Maurício Henrique Costa"
     },
     64: {
-        "titulo": "75436.23.00064.04 - Otimização Logística em Cadeias de Suprimento com Lean Manufacturing",
+        "titulo": "Otimização Logística em Cadeias de Suprimento com Lean Manufacturing",
         "descricao": (
             "A competitividade industrial brasileira depende crescentemente da eficiência "
             "das cadeias de suprimento e da adoção de práticas de manufatura enxuta. "
@@ -1234,7 +1233,7 @@ PROJECTS_DATA = {
         "autores": "Núbia Cristina Farias, Osório Luiz Carvalho, Poliana Andrade Moreira"
     },
     65: {
-        "titulo": "76547.20.00065.01 - Biorreatores de Membrana para Tratamento de Efluentes Industriais",
+        "titulo": "Biorreatores de Membrana para Tratamento de Efluentes Industriais",
         "descricao": (
             "O tratamento de efluentes industriais com alta carga orgânica e presença de "
             "compostos recalcitrantes é um desafio crescente para o setor industrial brasileiro, "
@@ -1253,7 +1252,7 @@ PROJECTS_DATA = {
         "autores": "Quezia Aparecida Gomes, Rivelino Prado Ferreira, Selma Cristina Barros"
     },
     66: {
-        "titulo": "77658.21.00066.03 - Saneamento Rural: Abastecimento de Água em Comunidades do Semiárido",
+        "titulo": "Saneamento Rural: Abastecimento de Água em Comunidades do Semiárido",
         "descricao": (
             "O acesso à água potável em quantidade e qualidade adequadas é um direito humano "
             "fundamental, ainda não plenamente garantido às populações rurais do semiárido "
@@ -1272,7 +1271,7 @@ PROJECTS_DATA = {
         "autores": "Tadeu Marcos Rezende, Urânia Batista Melo, Vanderlei Luiz Cruz"
     },
     67: {
-        "titulo": "78769.22.00067.02 - Controle PID Adaptativo para Automação de Processos Industriais",
+        "titulo": "Controle PID Adaptativo para Automação de Processos Industriais",
         "descricao": (
             "O controle de processos industriais por controladores PID (Proporcional-Integral-Derivativo) "
             "é amplamente utilizado na indústria química, petroquímica e de alimentos. "
@@ -1291,7 +1290,7 @@ PROJECTS_DATA = {
         "autores": "Waldir Soares Nunes, Xandra Cristina Pires, Zacarias Henrique Lopes"
     },
     68: {
-        "titulo": "79870.23.00068.04 - Tribologia e Lubrificação de Superfícies em Componentes Mecânicos",
+        "titulo": "Tribologia e Lubrificação de Superfícies em Componentes Mecânicos",
         "descricao": (
             "O desgaste tribológico de componentes mecânicos em contato deslizante representa "
             "uma das principais causas de falha em máquinas industriais, com impactos sobre "
@@ -1311,7 +1310,7 @@ PROJECTS_DATA = {
         "autores": "Abner Luiz Cavalcanti, Bianca Rocha Andrade, Clóvis Menezes Borges"
     },
     69: {
-        "titulo": "80981.20.00069.01 - Catálise Heterogênea em Processos Petroquímicos Verdes",
+        "titulo": "Catálise Heterogênea em Processos Petroquímicos Verdes",
         "descricao": (
             "A indústria petroquímica busca alternativas mais sustentáveis aos catalisadores "
             "tradicionais baseados em metais nobres e ácidos minerais. Este projeto sintetiza "
@@ -1330,7 +1329,7 @@ PROJECTS_DATA = {
         "autores": "Danilo Cristiano Fonseca, Elis Ferreira Guimarães, Francisco Luiz Assis"
     },
     70: {
-        "titulo": "81092.21.00070.03 - Estabilidade de Taludes em Encostas Urbanas: Análise de Risco e Monitoramento",
+        "titulo": "Estabilidade de Taludes em Encostas Urbanas: Análise de Risco e Monitoramento",
         "descricao": (
             "Os deslizamentos em encostas urbanas são um dos desastres naturais de maior "
             "impacto humano no Brasil, com centenas de mortes registradas anualmente "
@@ -1353,7 +1352,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 8: IDs 71-80 (Letras) --------------------------------------
     71: {
-        "titulo": "82103.22.00071.02 - Literatura Afro-Brasileira Contemporânea: Identidade, Memória e Resistência",
+        "titulo": "Literatura Afro-Brasileira Contemporânea: Identidade, Memória e Resistência",
         "descricao": (
             "A literatura afro-brasileira contemporânea tem se consolidado como campo "
             "de grande vitalidade criativa e relevância política, com autoras e autores "
@@ -1373,7 +1372,7 @@ PROJECTS_DATA = {
         "autores": "Jacira Moraes Cunha, Ladislau Ferreira Mota, Mirela Batista Rocha"
     },
     72: {
-        "titulo": "83214.23.00072.04 - Ensino de Língua Estrangeira e Interculturalidade em Contextos Escolares",
+        "titulo": "Ensino de Língua Estrangeira e Interculturalidade em Contextos Escolares",
         "descricao": (
             "O ensino de língua estrangeira na educação básica brasileira deve contemplar "
             "não apenas o desenvolvimento da competência linguística, mas também a "
@@ -1393,7 +1392,7 @@ PROJECTS_DATA = {
         "autores": "Nelson Augusto Farias, Oriana Cristina Lemos, Priscila Barros Andrade"
     },
     73: {
-        "titulo": "84325.20.00073.01 - Tradução e Adaptação Cultural de Literatura Infantil para o Contexto Brasileiro",
+        "titulo": "Tradução e Adaptação Cultural de Literatura Infantil para o Contexto Brasileiro",
         "descricao": (
             "A tradução de literatura infantil envolve não apenas a transposição linguística, "
             "mas também complexas negociações culturais que determinam o que é considerado "
@@ -1412,7 +1411,7 @@ PROJECTS_DATA = {
         "autores": "Querino Batista Campos, Rosane Cristina Torres, Silvério Luiz Moreira"
     },
     74: {
-        "titulo": "85436.21.00074.03 - Análise do Discurso Político Midiático em Eleições Presidenciais",
+        "titulo": "Análise do Discurso Político Midiático em Eleições Presidenciais",
         "descricao": (
             "As eleições presidenciais de 2018 e 2022 no Brasil foram marcadas pela intensa "
             "presença das mídias digitais e pela circulação massiva de desinformação. "
@@ -1431,7 +1430,7 @@ PROJECTS_DATA = {
         "autores": "Telma Aparecida Ramos, Ulisses Rodrigues Vieira, Vitória Helena Mendes"
     },
     75: {
-        "titulo": "86547.22.00075.02 - Modernismo Brasileiro: Drummond, Bandeira e a Poética da Memória",
+        "titulo": "Modernismo Brasileiro: Drummond, Bandeira e a Poética da Memória",
         "descricao": (
             "Carlos Drummond de Andrade e Manuel Bandeira são duas das vozes mais representativas "
             "da poesia modernista brasileira, e a memória — pessoal, histórica e cultural — "
@@ -1449,7 +1448,7 @@ PROJECTS_DATA = {
         "autores": "Wanderley Cristiano Borges, Ximena Aparecida Fonseca, Yanna Rodrigues Lima"
     },
     76: {
-        "titulo": "87658.23.00076.04 - Variação Dialetal no Português Nordestino: Corpus e Análise Sociolinguística",
+        "titulo": "Variação Dialetal no Português Nordestino: Corpus e Análise Sociolinguística",
         "descricao": (
             "O português falado no Nordeste do Brasil apresenta variação dialetal de grande "
             "interesse linguístico, com traços fonéticos, morfossintáticos e lexicais que "
@@ -1469,7 +1468,7 @@ PROJECTS_DATA = {
         "autores": "Zilda Cristina Assis, Afonso Luiz Gonçalves, Belarmino Ferreira Cruz"
     },
     77: {
-        "titulo": "88769.20.00077.01 - Intertextualidade e Mito na Obra de José Saramago",
+        "titulo": "Intertextualidade e Mito na Obra de José Saramago",
         "descricao": (
             "José Saramago é um dos mais importantes escritores de língua portuguesa do "
             "século XX, com uma obra caracterizada pelo diálogo constante com a tradição "
@@ -1488,7 +1487,7 @@ PROJECTS_DATA = {
         "autores": "Cedenir Batista Melo, Dionísia Aparecida Nunes, Evelize Rocha Pinto"
     },
     78: {
-        "titulo": "89870.21.00078.03 - Terminologia Científica em Português Brasileiro: Lexicografia Especializada",
+        "titulo": "Terminologia Científica em Português Brasileiro: Lexicografia Especializada",
         "descricao": (
             "A produção e difusão do conhecimento científico em português brasileiro demandam "
             "o desenvolvimento de recursos terminológicos atualizados nas diferentes áreas "
@@ -1508,7 +1507,7 @@ PROJECTS_DATA = {
         "autores": "Florêncio Rodrigues Barros, Gracinda Cristina Souza, Hilton Luiz Fonseca"
     },
     79: {
-        "titulo": "90981.22.00079.02 - Metáforas Conceptuais no Português Brasileiro: Uma Abordagem Cognitiva",
+        "titulo": "Metáforas Conceptuais no Português Brasileiro: Uma Abordagem Cognitiva",
         "descricao": (
             "A teoria da metáfora conceptual, desenvolvida por Lakoff e Johnson, propõe que "
             "as metáforas não são apenas figuras de linguagem, mas estruturas conceptuais "
@@ -1528,7 +1527,7 @@ PROJECTS_DATA = {
         "autores": "Irene Batista Ferreira, Júlio Augusto Menezes, Kézia Cristina Andrade"
     },
     80: {
-        "titulo": "91092.23.00080.04 - Letramento Funcional de Adultos na EJA: Práticas de Leitura e Escrita",
+        "titulo": "Letramento Funcional de Adultos na EJA: Práticas de Leitura e Escrita",
         "descricao": (
             "A Educação de Jovens e Adultos (EJA) atende uma parcela significativa da "
             "população brasileira que não concluiu a educação básica na idade regular, "
@@ -1550,7 +1549,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 9: IDs 81-90 (Ciências Exatas) ----------------------------
     81: {
-        "titulo": "92103.21.00081.01 - Síntese e Avaliação Biológica de Compostos Orgânicos com Atividade Antimicrobiana",
+        "titulo": "Síntese e Avaliação Biológica de Compostos Orgânicos com Atividade Antimicrobiana",
         "descricao": (
             "A resistência bacteriana a antibióticos convencionais impulsiona a busca por "
             "novos compostos bioativos com mecanismos de ação inovadores. Este projeto "
@@ -1570,7 +1569,7 @@ PROJECTS_DATA = {
         "autores": "Olívia Batista Farias, Paulino Rodrigues Melo, Quitéria Aparecida Braga"
     },
     82: {
-        "titulo": "93214.22.00082.03 - Propriedades Quânticas de Nanomateriais Semicondutores: Teoria e Experimento",
+        "titulo": "Propriedades Quânticas de Nanomateriais Semicondutores: Teoria e Experimento",
         "descricao": (
             "Os nanomateriais semicondutores (pontos quânticos, nanofios e nanoplacas) "
             "apresentam propriedades eletrônicas e ópticas únicas decorrentes do "
@@ -1590,7 +1589,7 @@ PROJECTS_DATA = {
         "autores": "Raimundo Luiz Cavalcanti, Sara Cristina Lopes, Tércio Henrique Borges"
     },
     83: {
-        "titulo": "94325.23.00083.02 - Modelagem Matemática de Doenças Infecciosas com Equações Diferenciais",
+        "titulo": "Modelagem Matemática de Doenças Infecciosas com Equações Diferenciais",
         "descricao": (
             "A modelagem matemática de epidemias tem papel central na compreensão da dinâmica "
             "de transmissão de doenças infecciosas e no planejamento de estratégias de "
@@ -1609,7 +1608,7 @@ PROJECTS_DATA = {
         "autores": "Udenilson Aparecido Costa, Vanda Rodrigues Nunes, Waldir Cristiano Lima"
     },
     84: {
-        "titulo": "95436.20.00084.04 - Análise Multivariada de Dados Socioeconômicos: Modelos e Aplicações",
+        "titulo": "Análise Multivariada de Dados Socioeconômicos: Modelos e Aplicações",
         "descricao": (
             "O desenvolvimento de modelos estatísticos multivariados para análise de dados "
             "socioeconômicos de grande dimensão apresenta desafios metodológicos importantes, "
@@ -1628,7 +1627,7 @@ PROJECTS_DATA = {
         "autores": "Xilene Batista Assis, Ytalo Rodrigues Ferreira, Zaíra Cristina Mota"
     },
     85: {
-        "titulo": "96547.21.00085.01 - Espectrometria de Massas para Detecção de Contaminantes Emergentes em Água",
+        "titulo": "Espectrometria de Massas para Detecção de Contaminantes Emergentes em Água",
         "descricao": (
             "Os contaminantes emergentes — fármacos, hormônios, pesticidas e produtos de "
             "higiene pessoal — são encontrados em concentrações traço em corpos d'água "
@@ -1648,7 +1647,7 @@ PROJECTS_DATA = {
         "autores": "Adair Luiz Gonçalves, Benedita Aparecida Cruz, Celso Rodrigues Barros"
     },
     86: {
-        "titulo": "97658.22.00086.03 - Materiais Magnéticos Nanoestruturados: Síntese, Propriedades e Aplicações",
+        "titulo": "Materiais Magnéticos Nanoestruturados: Síntese, Propriedades e Aplicações",
         "descricao": (
             "Os materiais magnéticos nanoestruturados têm aplicações promissoras em "
             "armazenamento de dados, hipertermia magnética para tratamento de câncer "
@@ -1667,7 +1666,7 @@ PROJECTS_DATA = {
         "autores": "Dalva Cristina Fonseca, Edmilson Batista Rocha, Felicidade Rodrigues Melo"
     },
     87: {
-        "titulo": "98769.23.00087.02 - Teoria dos Grupos Finitos: Estrutura, Representações e Aplicações",
+        "titulo": "Teoria dos Grupos Finitos: Estrutura, Representações e Aplicações",
         "descricao": (
             "A teoria dos grupos finitos é um ramo fundamental da álgebra abstrata, com "
             "conexões profundas com a teoria dos números, a geometria algébrica e a "
@@ -1687,7 +1686,7 @@ PROJECTS_DATA = {
         "autores": "Genésio Luiz Andrade, Hêlena Aparecida Pires, Ildemar Rodrigues Borges"
     },
     88: {
-        "titulo": "99870.20.00088.04 - Fotocatálise Heterogênea para Degradação de Pesticidas em Solo Agrícola",
+        "titulo": "Fotocatálise Heterogênea para Degradação de Pesticidas em Solo Agrícola",
         "descricao": (
             "O uso intensivo de pesticidas na agricultura brasileira resulta na contaminação "
             "de solos e lençóis freáticos, com riscos à saúde humana e à biodiversidade. "
@@ -1707,7 +1706,7 @@ PROJECTS_DATA = {
         "autores": "Joelma Batista Carvalho, Kátila Rodrigues Vieira, Leomar Aparecido Neto"
     },
     89: {
-        "titulo": "00981.21.00089.01 - Inferência Bayesiana em Modelos Hierárquicos para Dados de Saúde",
+        "titulo": "Inferência Bayesiana em Modelos Hierárquicos para Dados de Saúde",
         "descricao": (
             "Os modelos hierárquicos bayesianos oferecem uma estrutura flexível para análise "
             "de dados com estrutura multinível — como pacientes aninhados em hospitais, "
@@ -1725,7 +1724,7 @@ PROJECTS_DATA = {
         "autores": "Marlene Cristina Assis, Nonato Rodrigues Lima, Olindina Batista Fonseca"
     },
     90: {
-        "titulo": "01092.22.00090.03 - Simulação Computacional de Escoamentos Turbulentos em Geometrias Complexas",
+        "titulo": "Simulação Computacional de Escoamentos Turbulentos em Geometrias Complexas",
         "descricao": (
             "A simulação numérica de escoamentos turbulentos em geometrias complexas é "
             "fundamental para o projeto de sistemas de ventilação, turbinas eólicas "
@@ -1747,7 +1746,7 @@ PROJECTS_DATA = {
 
     # ---- BLOCO 10: IDs 91-100 (Ciências Ambientais) ----------------------
     91: {
-        "titulo": "02103.23.00091.02 - Modelagem de Emissões de GEE e Cenários de Mitigação para o Agronegócio",
+        "titulo": "Modelagem de Emissões de GEE e Cenários de Mitigação para o Agronegócio",
         "descricao": (
             "O setor agropecuário brasileiro responde por aproximadamente 27% das emissões "
             "nacionais de gases de efeito estufa (GEE), principalmente pelo desmatamento, "
@@ -1767,7 +1766,7 @@ PROJECTS_DATA = {
         "autores": "Sebastião Cristiano Nunes, Teotônio Batista Ferreira, Uiara Rodrigues Costa"
     },
     92: {
-        "titulo": "03214.20.00092.04 - Estratigrafia e Análise de Bacias Sedimentares para Prospecção de Petróleo",
+        "titulo": "Estratigrafia e Análise de Bacias Sedimentares para Prospecção de Petróleo",
         "descricao": (
             "A caracterização estratigráfica detalhada de bacias sedimentares é etapa "
             "essencial na exploração de petróleo e gás natural. Este projeto realiza "
@@ -1788,7 +1787,7 @@ PROJECTS_DATA = {
         "autores": "Valdemar Luiz Assis, Walnéia Cristina Guimarães, Xerxes Rodrigues Ramos"
     },
     93: {
-        "titulo": "04325.21.00093.01 - Erosão Hídrica e Desmatamento em Bacias Hidrográficas do Cerrado",
+        "titulo": "Erosão Hídrica e Desmatamento em Bacias Hidrográficas do Cerrado",
         "descricao": (
             "A conversão de vegetação nativa do Cerrado em áreas agrícolas tem intensificado "
             "processos erosivos hídricos, com impactos sobre a produtividade dos solos e "
@@ -1808,7 +1807,7 @@ PROJECTS_DATA = {
         "autores": "Yolanda Batista Lima, Zafiro Rodrigues Barros, Adélia Cristina Mota"
     },
     94: {
-        "titulo": "05436.22.00094.03 - Contaminação por Metais Pesados em Sedimentos Costeiros do NE Brasileiro",
+        "titulo": "Contaminação por Metais Pesados em Sedimentos Costeiros do NE Brasileiro",
         "descricao": (
             "Os estuários e zonas costeiras do Nordeste brasileiro recebem crescentes aportes "
             "de metais pesados provenientes de efluentes industriais, portuários e urbanos, "
@@ -1828,7 +1827,7 @@ PROJECTS_DATA = {
         "autores": "Benedito Luiz Fonseca, Cidinha Aparecida Braga, Diógenes Rodrigues Assis"
     },
     95: {
-        "titulo": "06547.23.00095.02 - Eutrofização e Florações de Cianobactérias em Reservatórios do Semiárido",
+        "titulo": "Eutrofização e Florações de Cianobactérias em Reservatórios do Semiárido",
         "descricao": (
             "Os reservatórios do semiárido nordestino são essenciais para o abastecimento "
             "humano e a irrigação agrícola, mas sofrem crescente processo de eutrofização "
@@ -1847,7 +1846,7 @@ PROJECTS_DATA = {
         "autores": "Elzira Batista Cavalcanti, Fortunato Rodrigues Neto, Genoveva Cristina Lemos"
     },
     96: {
-        "titulo": "07658.20.00096.04 - Geoprocessamento e SIG para Mapeamento do Uso do Solo Urbano",
+        "titulo": "Geoprocessamento e SIG para Mapeamento do Uso do Solo Urbano",
         "descricao": (
             "O monitoramento da expansão urbana e das transformações no uso e cobertura "
             "do solo é fundamental para o planejamento territorial e a gestão ambiental "
@@ -1867,7 +1866,7 @@ PROJECTS_DATA = {
         "autores": "Herculano Luiz Borges, Iracema Rodrigues Pinheiro, Jerônimo Batista Moreira"
     },
     97: {
-        "titulo": "08769.21.00097.01 - Fragmentação de Habitat e Corredores Ecológicos no Cerrado-Pantanal",
+        "titulo": "Fragmentação de Habitat e Corredores Ecológicos no Cerrado-Pantanal",
         "descricao": (
             "A fragmentação florestal reduz a conectividade entre populações de fauna "
             "silvestre, limitando o fluxo gênico e aumentando o risco de extinção local. "
@@ -1888,7 +1887,7 @@ PROJECTS_DATA = {
         "autores": "Katarina Cristina Farias, Laudelino Rodrigues Cruz, Margarida Batista Vieira"
     },
     98: {
-        "titulo": "09870.22.00098.03 - Dinâmica de Herbicidas no Solo: Adsorção, Mobilidade e Risco de Contaminação",
+        "titulo": "Dinâmica de Herbicidas no Solo: Adsorção, Mobilidade e Risco de Contaminação",
         "descricao": (
             "O uso intensivo de herbicidas na agricultura brasileira pode resultar em "
             "contaminação do solo e das águas subterrâneas quando os compostos apresentam "
@@ -1909,7 +1908,7 @@ PROJECTS_DATA = {
         "autores": "Nagib Luiz Andrade, Odélia Rodrigues Batista, Palmério Cristiano Gomes"
     },
     99: {
-        "titulo": "10981.23.00099.02 - Ilha de Calor Urbana: Monitoramento de Temperatura e Estratégias de Mitigação",
+        "titulo": "Ilha de Calor Urbana: Monitoramento de Temperatura e Estratégias de Mitigação",
         "descricao": (
             "O fenômeno de ilha de calor urbana (ICU) resulta do aumento da temperatura "
             "nas cidades em relação às áreas rurais vizinhas, decorrente da substituição "
@@ -1929,7 +1928,7 @@ PROJECTS_DATA = {
         "autores": "Querubim Batista Rocha, Roseane Rodrigues Melo, Silvano Cristiano Torres"
     },
     100: {
-        "titulo": "11092.20.00100.04 - Pressão Antrópica e Biodiversidade em Unidades de Conservação do Pantanal",
+        "titulo": "Pressão Antrópica e Biodiversidade em Unidades de Conservação do Pantanal",
         "descricao": (
             "As unidades de conservação (UCs) do Pantanal enfrentam crescentes pressões "
             "antrópicas provenientes do entorno, incluindo desmatamento, queimadas, "
@@ -2519,24 +2518,6 @@ def show_status():
             print(f"  Lote {b:02d} (bases {base_start:3d}-{base_end:3d}): PENDENTE")
 
 
-# Código de cadastro no início do título ("12045.21.00001.03 - "), na forma com
-# pontos e na forma com vírgulas produzida por make_duplicate_v1.
-CODIGO_CADASTRO = re.compile(r"^\s*\d{4,6}[.,]\d{2}[.,]\d{5}[.,]\d{2}\s*(?:-|:)\s*")
-
-
-def remove_codigo_cadastro(titulo: str) -> str:
-    """Remove o código de cadastro do início do título.
-
-    Os projetos-base foram redigidos com um código de cadastro no início do
-    título. Ele não tem contrapartida nos títulos de projeto da Plataforma
-    Lattes e, por ser constante dentro de cada quíntupla (e igual ao do
-    registro não-duplicata correspondente), introduziria na base um sinal
-    inexistente no cenário real. É removido na mesclagem, de modo que a base
-    publicada contenha apenas o título do projeto.
-    """
-    return CODIGO_CADASTRO.sub("", titulo)
-
-
 def merge_batches():
     all_projects = []
     missing = []
@@ -2551,9 +2532,6 @@ def merge_batches():
     if missing:
         print(f"Lotes pendentes: {missing}. Gere-os antes de mesclar.")
         return False
-
-    for projeto in all_projects:
-        projeto["titulo_projeto"] = remove_codigo_cadastro(projeto["titulo_projeto"])
 
     all_projects.sort(key=lambda x: x["id"])
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
