@@ -1,0 +1,214 @@
+{
+  "gerado_em": "2026-08-04T11:33:44",
+  "resultados": {
+    "original": {
+      "1": {
+        "tau_g": 0.85,
+        "tau_v": 0.7,
+        "F_g": [
+          "titulo_projeto",
+          "descricao_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 422,
+        "fp": 0,
+        "fn": 578,
+        "precisao": 1.0,
+        "recall": 0.422,
+        "f1": 0.5935,
+        "fp_por_categoria": {},
+        "fn_por_categoria": {
+          "outro": 221,
+          "v3-v4": 99,
+          "v2-v3": 97,
+          "base-v3(sem_desc)": 97,
+          "base-v4(1_autor)": 62,
+          "base-v2": 1,
+          "v1-v2": 1
+        },
+        "num_clusters": 360
+      },
+      "2": {
+        "tau_g": 0.85,
+        "tau_v": 0.7,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante",
+          "descricao_projeto"
+        ],
+        "tp": 741,
+        "fp": 0,
+        "fn": 259,
+        "precisao": 1.0,
+        "recall": 0.741,
+        "f1": 0.8512,
+        "fp_por_categoria": {},
+        "fn_por_categoria": {
+          "outro": 127,
+          "v3-v4": 63,
+          "base-v4(1_autor)": 62,
+          "v2-v3": 3,
+          "base-v3(sem_desc)": 2,
+          "v1-v2": 1,
+          "base-v2": 1
+        },
+        "num_clusters": 265
+      },
+      "3": {
+        "tau_g": 0.85,
+        "tau_v": 0.7,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 741,
+        "fp": 0,
+        "fn": 259,
+        "precisao": 1.0,
+        "recall": 0.741,
+        "f1": 0.8512,
+        "fp_por_categoria": {},
+        "fn_por_categoria": {
+          "outro": 127,
+          "v3-v4": 63,
+          "base-v4(1_autor)": 62,
+          "v2-v3": 3,
+          "base-v3(sem_desc)": 2,
+          "v1-v2": 1,
+          "base-v2": 1
+        },
+        "num_clusters": 265
+      },
+      "4": {
+        "tau_g": 0.935,
+        "tau_v": 0.7,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 641,
+        "fp": 0,
+        "fn": 359,
+        "precisao": 1.0,
+        "recall": 0.641,
+        "f1": 0.7812,
+        "fp_por_categoria": {},
+        "fn_por_categoria": {
+          "outro": 145,
+          "v3-v4": 68,
+          "base-v4(1_autor)": 62,
+          "v2-v3": 31,
+          "v1-v2": 20,
+          "base-v2": 20,
+          "base-v3(sem_desc)": 13
+        },
+        "num_clusters": 295
+      },
+      "5": {
+        "tau_g": 0.765,
+        "tau_v": 0.7,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 752,
+        "fp": 0,
+        "fn": 248,
+        "precisao": 1.0,
+        "recall": 0.752,
+        "f1": 0.8584,
+        "fp_por_categoria": {},
+        "fn_por_categoria": {
+          "outro": 124,
+          "v3-v4": 62,
+          "base-v4(1_autor)": 62
+        },
+        "num_clusters": 262
+      },
+      "6": {
+        "tau_g": 0.765,
+        "tau_v": 0.77,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 644,
+        "fp": 0,
+        "fn": 356,
+        "precisao": 1.0,
+        "recall": 0.644,
+        "f1": 0.7835,
+        "fp_por_categoria": {},
+        "fn_por_categoria": {
+          "outro": 178,
+          "v3-v4": 89,
+          "base-v4(1_autor)": 89
+        },
+        "num_clusters": 289
+      },
+      "7": {
+        "tau_g": 0.765,
+        "tau_v": 0.63,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 912,
+        "fp": 14,
+        "fn": 88,
+        "precisao": 0.9849,
+        "recall": 0.912,
+        "f1": 0.947,
+        "fp_por_categoria": {
+          "nao_duplicata(5xx)": 14
+        },
+        "fn_por_categoria": {
+          "outro": 44,
+          "base-v4(1_autor)": 22,
+          "v3-v4": 22
+        },
+        "num_clusters": 219
+      },
+      "8": {
+        "tau_g": 0.6885,
+        "tau_v": 0.567,
+        "F_g": [
+          "titulo_projeto"
+        ],
+        "F_v": [
+          "nomes_integrante"
+        ],
+        "tp": 976,
+        "fp": 150,
+        "fn": 24,
+        "precisao": 0.8668,
+        "recall": 0.976,
+        "f1": 0.9182,
+        "fp_por_categoria": {
+          "nao_duplicata(5xx)": 125,
+          "outro": 25
+        },
+        "fn_por_categoria": {
+          "outro": 12,
+          "base-v4(1_autor)": 6,
+          "v3-v4": 6
+        },
+        "num_clusters": 180
+      }
+    }
+  }
+}
